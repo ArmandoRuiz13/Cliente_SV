@@ -22,6 +22,39 @@ app.get('/explorers/:id', async (req, res) => {
   res.json(explorer);
 });
 
+app.post('/explorers', async (req, res) => {
+    const explorer = {
+      name: req.body.name,
+      username: req.body.username,
+      mission: req.body.mission
+     };
+
+app.put('/explorers/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    await prisma.explorer.update({
+        where: {
+            id: id
+        },
+        data: {
+            mission: req.body.mission
+        }
+    })
+
+    return res.json({message: "Actualizado correctamente"});
+    });
+
+app.delete('/explorers/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    await prisma.explorer.delete({where: {id: id}});
+    return res.json({message: "Eliminado correctamente"});
+});
+
+    const message = 'Explorer creado.';
+    await prisma.explorer.create({data: explorer});
+    return res.json({message});
+  });
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });

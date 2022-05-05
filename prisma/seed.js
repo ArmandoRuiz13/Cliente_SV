@@ -3,26 +3,47 @@ const prisma = new PrismaClient();
 
 (async function main() {
   try {
-    const explorer1 = await prisma.ExplorerInfo.upsert({
-      where: { name: 'Armando Ruiz' },
+    const woopa = await prisma.explorer.upsert({
+      where: { name: 'Woopa' },
       update: {},
       create: {
-        name: 'Armando Ruiz',
-				lang: 'Español',
-				missionCommander: 'Carlo'
+        name: 'Woopa',
+				username: 'ajolonauta',
+				mission: 'Node'
       },
     });
 
-    const explorer2 = await prisma.ExplorerInfo.upsert({
-      where: { name: 'Jesus Anaya' },
+    const woopa1 = await prisma.explorer.upsert({
+      where: { name: 'Woopa1' },
       update: {},
       create: {
-        name: 'Jesus Anaya',
-				lang: 'Ingles',
-				missionCommander: 'Carlo'
+        name: 'Woopa1',
+				username: 'ajolonauta1',
+				mission: 'Node'
       },
     });
-    console.log('Create 2 explorers');
+
+    const woopa2 = await prisma.explorer.upsert({
+      where: { name: 'Woopa 2' },
+      update: {},
+      create: {
+        name: 'Woopa 2',
+				username: 'ajolonauta2',
+				mission: 'Java'
+      },
+    });
+
+    const woopa3 = await prisma.explorer.upsert({
+      where: { name: 'Woopa 3' },
+      update: {},
+      create: {
+        name: 'Woopa 3',
+				username: 'ajolonauta3',
+				mission: 'Node'
+      },
+    });
+
+    console.log('Create 3 explorers');
   } catch(e) {
     console.error(e);
     process.exit(1);

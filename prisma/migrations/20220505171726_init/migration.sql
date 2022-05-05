@@ -4,9 +4,6 @@
   - You are about to drop the `Explorer` table. If the table is not empty, all the data it contains will be lost.
 
 */
--- DropTable
-DROP TABLE "Explorer";
-
 -- CreateTable
 CREATE TABLE "ExplorerInfo" (
     "id" SERIAL NOT NULL,

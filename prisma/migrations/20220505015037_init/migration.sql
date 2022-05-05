@@ -1,15 +1,14 @@
 -- CreateTable
-CREATE TABLE "Explorer" (
+CREATE TABLE "ExplorerInfo" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "username" VARCHAR(255) NOT NULL,
-    "mission" VARCHAR(255) NOT NULL,
-    "azureCertification" BOOLEAN NOT NULL DEFAULT false,
-    "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "lastUpdated" TIMESTAMP(3) NOT NULL,
+    "lang" VARCHAR(255) NOT NULL,
+    "missionCommander" VARCHAR(255) NOT NULL,
+    "enrollments" INTEGER NOT NULL,
+    "hasCertification" BOOLEAN NOT NULL DEFAULT false,
 
-    CONSTRAINT "Explorer_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ExplorerInfo_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Explorer_name_key" ON "Explorer"("name");
+CREATE UNIQUE INDEX "ExplorerInfo_name_key" ON "ExplorerInfo"("name");

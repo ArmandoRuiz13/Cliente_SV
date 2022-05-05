@@ -2,10 +2,17 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const port = process.env.PORT || 3000;
-
 // Require para usar Prisma
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+//cors
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.json({message: 'alive'});
@@ -53,28 +60,6 @@ app.delete('/explorers/:id', async (req, res) => {
   await prisma.explorer.create({data: explorer});
   return res.json({message});
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.get('/explorersInfo', async (req, res) => {
     const allExplorers =  await prisma.explorerInfo.findMany({});

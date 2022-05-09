@@ -3,43 +3,33 @@ const prisma = new PrismaClient();
 
 (async function main() {
   try {
-    const woopa = await prisma.explorer.upsert({
-      where: { name: 'Woopa' },
+    const woopa = await prisma.missionCommander.upsert({
+      where: { name: 'Fernando' },
       update: {},
       create: {
-        name: 'Woopa',
-				username: 'ajolonauta',
-				mission: 'Node'
+        name: 'Fernando',
+				username: 'Fernandito123',
+				mainStack: 'Node'
       },
     });
 
-    const woopa1 = await prisma.explorer.upsert({
-      where: { name: 'Woopa1' },
+    const woopa1 = await prisma.missionCommander.upsert({
+      where: { name: 'Carlos' },
       update: {},
       create: {
-        name: 'Woopa1',
-				username: 'ajolonauta1',
-				mission: 'Node'
+        name: 'Carlos',
+				username: 'Carlo',
+				mainStack: 'Node'
       },
     });
 
-    const woopa2 = await prisma.explorer.upsert({
-      where: { name: 'Woopa 2' },
+    const woopa2 = await prisma.missionCommander.upsert({
+      where: { name: 'Alejandra' },
       update: {},
       create: {
-        name: 'Woopa 2',
-				username: 'ajolonauta2',
-				mission: 'Java'
-      },
-    });
-
-    const woopa3 = await prisma.explorer.upsert({
-      where: { name: 'Woopa 3' },
-      update: {},
-      create: {
-        name: 'Woopa 3',
-				username: 'ajolonauta3',
-				mission: 'Node'
+        name: 'Alexandra',
+				username: 'Alexandra2',
+				mainStack: 'Java'
       },
     });
 

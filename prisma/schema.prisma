@@ -18,11 +18,11 @@ model Explorer {
   dateCreated DateTime @default(now())
   lastUpdated DateTime @updatedAt
 }
-model ExplorerInfo {
+model missionCommander {
   id Int @id @default(autoincrement())
   name String @unique
-  lang String @db.VarChar(255)
-  missionCommander String @db.VarChar(255)
-  enrrollments Int @default(1)
-  hasCertification Boolean @default(false)
+  username String @db.VarChar(255)
+  mainStack String @db.VarChar(255)
+  currentEnrollment Boolean @default(false)
+  hasAzureCertification Boolean @default(false)
 }

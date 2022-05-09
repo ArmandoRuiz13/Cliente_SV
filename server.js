@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 //cors
 //cors 
 const cors = require("cors"); 
-const corsOptions = { origin: "https://localhost:8081", optionsSuccessStatus: 200, }; 
+const corsOptions = { origin: "npm run build", optionsSuccessStatus: 200, }; 
 app.use(cors()); app.options('*',cors());
 
 app.get('/', (req, res) => {

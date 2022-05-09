@@ -6,13 +6,10 @@ const port = process.env.PORT || 3000;
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 //cors
-const cors = require("cors");
-
-const corsOptions = {
-  origin: "http://localhost:8081"
-};
-
-app.use(cors(corsOptions));
+//cors 
+const cors = require("cors"); 
+const corsOptions = { origin: "https://localhost:8081", optionsSuccessStatus: 200, }; 
+app.use(cors()); app.options('*',cors());
 
 app.get('/', (req, res) => {
   res.json({message: 'alive'});

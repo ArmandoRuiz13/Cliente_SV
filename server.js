@@ -57,28 +57,28 @@ app.delete('/explorers/:id', async (req, res) => {
   return res.json({message});
 });
 
-app.get('/explorersInfo', async (req, res) => {
-    const allExplorers =  await prisma.explorerInfo.findMany({});
-    res.json(allExplorers);
+app.get('/missionCommander', async (req, res) => {
+    const allmissionCommander =  await prisma.missionCommander.findMany({});
+    res.json(allmissionCommander);
   });
 
-app.get('/explorersInfo/:id', async (req, res) => {
+app.get('/missionCommander/:id', async (req, res) => {
   const id = req.params.id;
-  const explorer = await prisma.explorerInfo.findUnique({where: {id: parseInt(id)}});
-  res.json(explorer);
+  const missionCommander = await prisma.missionCommander.findUnique({where: {id: parseInt(id)}});
+  res.json(missionCommander);
 });
 
-app.post('/explorersInfo', async (req, res) => {
-    const explorer = {
+app.post('/missionCommander', async (req, res) => {
+    const missionCommander = {
       name: req.body.name,
       lang: req.body.lang,
       missionCommander: req.body.missionCommander
      };
 
-app.put('/explorersInfo/:id', async (req, res) => {
+app.put('/missionCommander/:id', async (req, res) => {
     const id = parseInt(req.params.id);
 
-    await prisma.explorerInfo.update({
+    await prisma.missionCommander.update({
         where: {
             id: id
         },
@@ -90,14 +90,14 @@ app.put('/explorersInfo/:id', async (req, res) => {
     return res.json({message: "Actualizado correctamente"});
     });
 
-app.delete('/explorersInfo/:id', async (req, res) => {
+app.delete('/missionCommander/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    await prisma.explorerInfo.delete({where: {id: id}});
+    await prisma.missionCommander.delete({where: {id: id}});
     return res.json({message: "Eliminado correctamente"});
 });
 
-    const message = 'Explorer creado.';
-    await prisma.explorerInfo.create({data: explorer});
+    const message = 'missionCommander creado.';
+    await prisma.missionCommander.create({data: explorer});
     return res.json({message});
   });
 

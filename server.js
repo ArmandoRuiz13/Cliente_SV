@@ -7,8 +7,10 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 //cors
 const cors = require("cors"); 
-const corsOptions = { origin: "npm run build", optionsSuccessStatus: 200, }; 
-app.use(cors()); app.options('*',cors());
+const corsOptions = {
+   origin: "http://localhost:8081", 
+  }; 
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.json({message: 'alive'});
@@ -97,7 +99,7 @@ app.delete('/missionCommander/:id', async (req, res) => {
 });
 
     const message = 'missionCommander creado.';
-    await prisma.missionCommander.create({data: explorer});
+    await prisma.missionCommander.create({data: missionCommander});
     return res.json({message});
   });
 

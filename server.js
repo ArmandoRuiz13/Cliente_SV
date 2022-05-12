@@ -71,11 +71,17 @@ app.get('/missionCommander/:id', async (req, res) => {
 });
 
 app.post('/missionCommander', async (req, res) => {
-    const missionCommander = {
-      name: req.body.name,
-      lang: req.body.lang,
-      missionCommander: req.body.missionCommander
+  const missionCommander = {
+    name: req.body.name,
+    username: req.body.username,
+    mainStack: req.body.mainStack,
+    currentEnrollment: req.body.currentEnrollment,
+    hasAzureCertification: req.body.hasAzureCertification
      };
+     const message = 'missionCommander creado.';
+     await prisma.missionCommander.create({data: missionCommander});
+     return res.json({message});
+     });
 
 app.put('/missionCommander/:id', async (req, res) => {
     const id = parseInt(req.params.id);
@@ -85,23 +91,19 @@ app.put('/missionCommander/:id', async (req, res) => {
             id: id
         },
         data: {
-            mission: req.body.mission
+          mainStack: req.body.mainStack
         }
     })
 
     return res.json({message: "Actualizado correctamente"});
     });
-
+    
 app.delete('/missionCommander/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     await prisma.missionCommander.delete({where: {id: id}});
     return res.json({message: "Eliminado correctamente"});
 });
 
-    const message = 'missionCommander creado.';
-    await prisma.missionCommander.create({data: missionCommander});
-    return res.json({message});
-  });
 
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
